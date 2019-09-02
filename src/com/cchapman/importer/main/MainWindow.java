@@ -13,6 +13,9 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryStack.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
+/**
+ *  This class represents the main window that will show upon running the application
+ */
 public class MainWindow
 {
     // The window handle
