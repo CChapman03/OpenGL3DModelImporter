@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * This class represents a 4-sided Face or Quad.
  */
-public class QuadFace
+public class QuadFace extends Face
 {
     private Vertex v0, v1, v2, v3;
 
@@ -22,6 +22,7 @@ public class QuadFace
         this.v3 = v3;
     }
 
+    @Override
     public float[] getBufferData()
     {
         float[] v0_data = v0.getBufferData();
@@ -44,6 +45,7 @@ public class QuadFace
         return data_result;
     }
 
+    @Override
     public int[] getIndexBufferData()
     {
         // Return Indices of Vertices starting at first vertex going Counter-Clockwise

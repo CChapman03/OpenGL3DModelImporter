@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * This class represents a 3 sided Face or Triangle.
  */
-public class TriangleFace
+public class TriangleFace extends Face
 {
     private Vertex v0, v1, v2;
 
@@ -21,6 +21,7 @@ public class TriangleFace
         this.v2 = v2;
     }
 
+    @Override
     public float[] getBufferData()
     {
         float[] v0_data = v0.getBufferData();
@@ -41,6 +42,7 @@ public class TriangleFace
         return data_result;
     }
 
+    @Override
     public int[] getIndexBufferData()
     {
         return new int[] {v0.getIndex(), v1.getIndex(), v2.getIndex()};

@@ -90,4 +90,13 @@ public class Vertex
     {
         this.index = index;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Vertex: " + index + "\n"
+                + "Position: " + position.x + ", " + position.y + ", " + position.z + "\n"
+                + "Normal: " + normal.x + ", " + normal.y + ", " + normal.z + "\n"
+                + "Texcoord: " + texcoord.x + ", " + texcoord.y + "\n\n";
+    }
 }
