@@ -15,6 +15,9 @@ import java.util.Hashtable;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL12.*;
 import static org.lwjgl.opengl.GL15.*;
+import static org.lwjgl.stb.STBImage.*;
+import static org.lwjgl.stb.STBImage.*;
+import static org.lwjgl.stb.STBImageResize.*;
 
 /**
  *  This class represents an in game Texture or Image
@@ -24,7 +27,9 @@ public class Texture
     private BufferedImage img;
     private int id;
     private String path;
-    private int width, height;
+    private int width, height, channels;
+
+    private ByteBuffer image;
 
     /**
      * A constructor to initialize a Texture based an image path
@@ -70,6 +75,20 @@ public class Texture
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
         glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+    private void initImage(String imgPath)
+    {
+        ByteBuffer imageBuffer;
+
+        try
+        {
+            imageBuffer = Utils.getEmptyByteBuffer(8 * 1024);
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
     }
 
     private void initBufferedImage(String Filename)

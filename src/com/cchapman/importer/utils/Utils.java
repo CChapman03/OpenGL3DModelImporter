@@ -12,10 +12,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.lang.Math;
-import java.nio.DoubleBuffer;
-import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-import java.nio.ShortBuffer;
+import java.nio.*;
 import java.util.ArrayList;
 
 public class Utils
@@ -59,6 +56,13 @@ public class Utils
         IntBuffer ib = BufferUtils.createIntBuffer(size);
 
         return ib;
+    }
+
+    public static ByteBuffer getEmptyByteBuffer(int size)
+    {
+        ByteBuffer bb = BufferUtils.createByteBuffer(size);
+
+        return bb;
     }
 
     public static float[] toFloatArray(ArrayList<Float> list)

@@ -12,6 +12,12 @@ public class Edge
 
     }
 
+    public Edge(Vertex v0, Vertex v1)
+    {
+        this.v0 = v0;
+        this.v1 = v1;
+    }
+
     public float getLength()
     {
         return v0.getPosition().distance(v1.getPosition());
