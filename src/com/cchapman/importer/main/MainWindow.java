@@ -21,6 +21,9 @@ public class MainWindow
     // The window handle
     private long window;
 
+    private static int window_width;
+    private static int window_height;
+
     private void init()
     {
         // Setup an error callback. The default implementation
@@ -62,6 +65,9 @@ public class MainWindow
 
             // Get the window size passed to glfwCreateWindow
             glfwGetWindowSize(window, pWidth, pHeight);
+
+            this.window_width = pWidth.get(0);
+            this.window_height = pHeight.get(0);
 
             // Get the resolution of the primary monitor
             GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
@@ -128,5 +134,25 @@ public class MainWindow
     public static void main(String[] args)
     {
         new MainWindow().run();
+    }
+
+    public static int getWindow_width()
+    {
+        return window_width;
+    }
+
+    public void setWindow_width(int window_width)
+    {
+        this.window_width = window_width;
+    }
+
+    public static int getWindow_height()
+    {
+        return window_height;
+    }
+
+    public void setWindow_height(int window_height)
+    {
+        this.window_height = window_height;
     }
 }

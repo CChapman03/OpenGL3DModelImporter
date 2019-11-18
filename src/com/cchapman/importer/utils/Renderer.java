@@ -1,5 +1,6 @@
 package com.cchapman.importer.utils;
 
+import com.cchapman.importer.gameobjects.Camera;
 import com.cchapman.importer.primitives.Mesh;
 import com.cchapman.importer.primitives.Vertex;
 
@@ -23,8 +24,7 @@ public class Renderer
 
     private ShaderProgram shader;
 
-    //TODO add Camera object to Renderer
-    //private Camera camera;
+    private Camera camera;
     private Mesh mesh;
 
     private ArrayList<Texture> textures = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Renderer
         attrs.add(new ShaderAttribute(1, "a_normal"));
         attrs.add(new ShaderAttribute(2, "a_texcoord"));
 
-        this.shader = new ShaderProgram("src/Shaders/shader.vert.glsl", "src/Shaders/shader.frag", attrs);
+        this.shader = new ShaderProgram("src/com/cchapman/importer/shaders/shader.vert.glsl", "src/com/cchapman/importer/shaders/shader.frag", attrs);
 
         vbo_id = glGenBuffers();
         glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
@@ -72,9 +72,9 @@ public class Renderer
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, ibo_size, GL_DYNAMIC_DRAW);
     }
 
-    public void begin(/*Camera camera*/)
+    public void begin(Camera camera)
     {
-        //this.camera = camera;
+        this.camera = camera;
 
         //shader.setUniformMat4("MVP", camera.getMVPMat());
 
@@ -148,7 +148,7 @@ public class Renderer
     private void initShaderUniforms()
     {
         // Vertex Shader Uniforms
-        //shader.setUniformMat4("MVP", camera.getMVPMat());
+        shader.setUniformMat4("MVP", camera.getMVPMat());
 
         // Fragment Shader Uniforms
         shader.setUniform1i("texture", 0);

@@ -85,4 +85,48 @@ public class Mesh
 
         return data_result;
     }
+
+    public int getVertexCount()
+    {
+        return vertices.size();
+    }
+
+    public int getEdgeCount()
+    {
+        int count = 0;
+
+        //TODO calculate edge count using index data
+
+        return count;
+    }
+
+    public int getFaceCount()
+    {
+        return faces.size();
+    }
+
+    public int getTriangleCount()
+    {
+        return vertices.size() / 3;
+    }
+
+    public ArrayList<Vertex> getVertices()
+    {
+        return vertices;
+    }
+
+    public void setVertices(ArrayList<Vertex> vertices)
+    {
+        this.vertices = vertices;
+    }
+
+    public ArrayList<Face> getFaces()
+    {
+        return faces;
+    }
+
+    public void setFaces(ArrayList<Face> faces)
+    {
+        this.faces = faces;
+    }
 }
