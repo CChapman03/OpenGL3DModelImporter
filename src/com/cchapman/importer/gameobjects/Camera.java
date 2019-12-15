@@ -36,4 +36,64 @@ public class Camera
     {
         return Utils.getProjectionMatrix(this.fov, (float)MainWindow.getWindow_width() / (float)MainWindow.getWindow_height(), near, far).mul(Utils.getViewMatrix(this.position, this.target));
     }
+
+    public Vector3f getPosition()
+    {
+        return position;
+    }
+
+    public void setPosition(Vector3f position)
+    {
+        this.position = position;
+    }
+
+    public Quaternionf getRotation()
+    {
+        return rotation;
+    }
+
+    public void setRotation(Quaternionf rotation)
+    {
+        this.rotation = rotation;
+    }
+
+    public Vector3f getTarget()
+    {
+        return target;
+    }
+
+    public void setTarget(Vector3f target)
+    {
+        this.target = target;
+    }
+
+    public float getFov()
+    {
+        return fov;
+    }
+
+    public void setFov(float fov)
+    {
+        this.fov = fov;
+    }
+
+    public float getNear()
+    {
+        return near;
+    }
+
+    public void setNear(float near)
+    {
+        this.near = near;
+    }
+
+    public float getFar()
+    {
+        return far;
+    }
+
+    public void setFar(float far)
+    {
+        this.far = far;
+    }
 }

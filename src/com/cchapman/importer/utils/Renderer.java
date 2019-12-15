@@ -88,6 +88,8 @@ public class Renderer
         initShaderUniforms();
         flush();
         drawing = false;
+
+        cleanup();
     }
 
     private void flush()

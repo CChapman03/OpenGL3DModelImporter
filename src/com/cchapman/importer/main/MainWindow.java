@@ -1,10 +1,16 @@
 package com.cchapman.importer.main;
 
+import com.cchapman.importer.gameobjects.Camera;
+import com.cchapman.importer.primitives.Mesh;
+import com.cchapman.importer.utils.ObjImporter;
+import com.cchapman.importer.utils.Renderer;
+import org.joml.Vector3f;
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
 import org.lwjgl.system.*;
 
+import javax.swing.*;
 import java.nio.*;
 
 import static org.lwjgl.glfw.Callbacks.*;
@@ -24,8 +30,19 @@ public class MainWindow
     private static int window_width;
     private static int window_height;
 
+    private String OBJFile = null;
+    private Mesh OBJMesh = null;
+
     private void init()
     {
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+
+        OBJFile = chooser.getSelectedFile().getAbsolutePath();
+        OBJMesh = ObjImporter.importMesh(OBJFile);
+
+        chooser = null;
+
         // Setup an error callback. The default implementation
         // will print the error message in System.err.
         GLFWErrorCallback.createPrint(System.err).set();
@@ -35,6 +52,8 @@ public class MainWindow
         {
             throw new IllegalStateException("Unable to initialize GLFW");
         }
+
+        chooser = null;
 
         // Configure GLFW
         glfwDefaultWindowHints(); // optional, the current window hints are already the default
@@ -128,6 +147,13 @@ public class MainWindow
             // Poll for window events. The key callback above will only be
             // invoked during this call.
             glfwPollEvents();
+
+            Camera camera = new Camera(new Vector3f(0f, 0f, -12f), new Vector3f(0,0,0));
+
+            Renderer meshRenderer = new Renderer();
+            meshRenderer.begin(camera);
+            meshRenderer.render(OBJMesh);
+            meshRenderer.end();
         }
     }
 
